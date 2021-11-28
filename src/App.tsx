@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from 'react'
+import Background from './component/backgroundImage'
+import AppBody from './component/view'
+import { BrowserRouter,Route,Routes } from 'react-router-dom'
+
+import Home from './pages/home'
+import AboutMe from './pages/aboutMe'
+import styled from 'styled-components';
+import Header from './component/header'
+import Bottom from './component/bottom'
+
+const Main = styled.div`
+  width:100%;
+  height:100%;
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  position:absolute
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          i will Learn React
-        </a>
-      </header>
-    </div>
+    <Main>
+      {/* <Background/> */}
+      <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aboutMe" element={<AboutMe />} />
+          <Route
+            path="*"
+            element={<Home />}
+          />
+        </Routes>
+        <Bottom/>
+      </BrowserRouter>
+    </Main>
   );
 }
 
