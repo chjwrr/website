@@ -5,6 +5,7 @@ import AppBody from './component/view'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 
 import Home from './pages/home'
+import Video from './pages/video'
 import AboutMe from './pages/aboutMe'
 import styled from 'styled-components';
 import Header from './component/header'
@@ -27,7 +28,9 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/video" element={<Video />} />
           <Route path="/aboutMe" element={<AboutMe />} />
+          
           <Route
             path="*"
             element={<Home />}

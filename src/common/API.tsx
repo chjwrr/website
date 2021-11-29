@@ -16,14 +16,6 @@ export const API_new_detail = 'https://api.isoyu.com/api/News/new_detail?postid=
  * 网红、明星、热舞、风景、游戏、动物
  * */
 export const API_video = 'https://api.iyk0.com/dsp/?type=风景'
-/**新闻详情 
- * type 精品视频0 搞笑1 美女2 体育3 新闻4
- * */
-export const API_video_list = 'https://api.isoyu.com/api/Video/video_type?type=2&page=0'
- /**列表视频详情 
- * vid 视频id
- * */
-export const API_video_list_detail = 'https://api.isoyu.com/api/Video/video_detail?vid=VDB9N6RHE'
  /**音乐 
  * sort 热歌榜，新歌榜，飙升榜，抖音榜，电音榜
  * */

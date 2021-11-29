@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '../../common/utils'
+import ParticlesBg from '../../component/ParticlesBg'
 
 export const BodyWrapper = styled.div`
   position: relative;
@@ -11,13 +12,14 @@ export const BodyWrapper = styled.div`
   @media (max-width: 768px) {
   };
   height:100%;
-  z-index:10;
+  z-index:2;
   background-color:${colors.black};
   overflow:hidden
 `
 
 export default function AppBody({ children }: { children: React.ReactNode }) {
   return <BodyWrapper>
+    <ParticlesBg/>
     {children}
   </BodyWrapper>
 }
@@ -28,20 +30,19 @@ export const BodyMainWrapper = styled.div`
   width: 100%;
   display:flex;
   flex-direction:column;
-  margin:100px 0px 0px 0px;
   @media (max-width: 768px) {
-    padding:0px 15px;
-    margin-top:70px;
-    margin-left:0px;
-    width:100%
+   
   };
+  z-index2;
+  padding-top:50px;
+  padding-bottom:70px;
+  // background-color:${colors.black};
   height:100%;
-  align-items:center;
-  z-index:10
+
 `
 
-export function AppMainBody({ children }: { children: React.ReactNode }) {
-  return <BodyMainWrapper>
+export function AppMainBody({ children,style }: { children: React.ReactNode,style?:Object }) {
+  return <BodyMainWrapper style={style}>
     {children}
   </BodyMainWrapper>
 }
