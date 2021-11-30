@@ -1,11 +1,18 @@
+import axios from 'axios';
+import { useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import styled from 'styled-components' 
+import { API_one_word } from '../../common/API';
 import { colors } from '../../common/utils';
 import { ButtonClick } from '../button';
-import { RowEnd,RowFixed } from '../row'
+import { RowBetween, RowEnd,RowFixed } from '../row'
 import {Text} from '../text'
+import {useState} from 'react'
+import Texty from 'rc-texty'
+import 'rc-texty/assets/index.css';
 
-const HeaderView = styled(RowEnd)<{
+
+const HeaderView = styled(RowBetween)<{
   solid:boolean
 }>`
   height:50px;
@@ -25,6 +32,7 @@ function Header() {
   const location = useLocation()
   return (
     <HeaderView solid={location.pathname == '/'}>
+      <LeftContent/>
       <RightView>
         <ButtonClick onClick={()=>{
           navigate('/video')
@@ -35,6 +43,32 @@ function Header() {
       </RightView>
     </HeaderView>
   );
+}
+function LeftContent(){
+  const [content,setContent] = useState('')
+  const [show,setShow] = useState(false)
+
+  useEffect(()=>{
+    axios.get(API_one_word).then((res)=>{
+      if (res.data.code == 200){
+        setContent(res.data.data.hitokoto)
+        setInterval(()=>{
+          setShow((pre)=>!pre)
+        },2000)
+      } 
+    })
+  },[])
+  return <RowFixed>
+    <div className="texty-demo" style={{
+      color:'#fff',
+      fontSize:10,
+      fontWeight:'bold'
+    }}>
+     <Texty>
+       1234
+     </Texty>
+  </div>
+  </RowFixed>
 }
 
 export default Header;
